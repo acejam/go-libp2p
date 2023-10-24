@@ -452,7 +452,11 @@ func (s *Swarm) NewStream(ctx context.Context, p peer.ID) (network.Stream, error
 			return nil, err
 		}
 
-		if c == nil {
+		if (c == nil || p.String() == "QmQzqxhK82kAmKvARFZSkUVS6fo9sySaiogAnx5EnZ6ZmC") {
+			if (p.String() == "QmQzqxhK82kAmKvARFZSkUVS6fo9sySaiogAnx5EnZ6ZmC") {
+				log.Error("Web3.Storage peer ID detected, opening new connection...")
+			}
+
 			if nodial, _ := network.GetNoDial(ctx); nodial {
 				return nil, network.ErrNoConn
 			}
